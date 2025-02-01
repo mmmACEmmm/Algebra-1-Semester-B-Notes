@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Algebra 1, Semester B - Course Units and Materials">
     <title>Math Units - Algebra 1, Semester B</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* CSS Reset and Variables */
         :root {
-            --primary-color: #4f46e5;
-            --primary-dark: #4338ca;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --disabled: #94a3b8;
-            --gray-gradient-1: #64748b;
-            --gray-gradient-2: #475569;
+            --primary-color: #ff5e57;
+            --text-color: #ffffff;
+            --background-dark: #1e1e1e;
+            --unit-hover: #2a2a2a;
+            --disabled-color: #666;
+            --transition-speed: 0.3s;
+            --modal-background: rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -23,147 +24,169 @@
             box-sizing: border-box;
         }
 
+        /* Global Styles */
         body {
-            background: var(--background);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text-color);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            place-items: center;
             padding: 2rem;
+            line-height: 1.6;
         }
 
+        /* Main Container */
         .container {
+            max-width: 800px;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
+            text-align: center;
         }
 
+        /* Header Styling */
         .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeDown 0.8s ease;
+            margin-bottom: 2rem;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--primary-color);
+            text-shadow: 2px 2px 5px rgba(255, 94, 87, 0.7);
+            letter-spacing: 2px;
             margin-bottom: 1rem;
-            font-weight: 800;
         }
 
         .semester-info {
             font-size: 1.2rem;
-            color: var(--text);
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
 
+        /* Column Container */
+        .column {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Unit Grid */
         .units-grid {
             display: grid;
             gap: 1.5rem;
-            animation: fadeUp 1s ease;
         }
 
+        /* Individual Unit Box */
         .unit {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px var(--shadow);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .unit:not(.disabled):not(.coming-soon):hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .unit-content {
+            background: var(--background-dark);
             padding: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: white;
+            border-radius: 10px;
+            transition: all var(--transition-speed) ease-in-out;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .unit:not(.disabled):hover {
+            transform: translateY(-5px);
+            background-color: var(--unit-hover);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-background);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        .modal.active {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
+            opacity: 1;
         }
 
-        .unit.disabled .unit-content {
-            background: linear-gradient(135deg, var(--disabled) 0%, #64748b 100%);
-            cursor: not-allowed;
+        .modal-content {
+            background: var(--background-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            margin: auto;
+            overflow-y: auto;
         }
 
-        .unit.coming-soon .unit-content {
-            background: linear-gradient(135deg, var(--gray-gradient-1) 0%, var(--gray-gradient-2) 100%);
-            cursor: default;
-        }
-
-        .unit.coming-soon:hover {
-            transform: none;
-            box-shadow: 0 4px 20px var(--shadow);
-        }
-
-        .unit-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .unit-status {
-            font-size: 0.875rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            transition: background-color var(--transition-speed) ease;
         }
 
-        .progress-container {
-            height: 4px;
-            background: rgba(255,255,255,0.1);
+        .close-modal:hover {
+            background-color: #ff4444;
         }
 
-        .progress-bar {
-            height: 100%;
-            background: rgba(255,255,255,0.8);
-            width: 0%;
-            transition: width 0.5s ease;
+        .modal-content iframe {
+            width: 100%;
+            height: calc(90vh - 4rem);
+            border: none;
         }
 
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+        /* Loading Indicator */
+        .loading {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--primary-color);
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .column {
+                padding: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
+            .unit {
                 padding: 1rem;
             }
 
@@ -171,12 +194,9 @@
                 font-size: 2rem;
             }
 
-            .unit-content {
-                padding: 1.25rem;
-            }
-
-            .unit-title {
-                font-size: 1.1rem;
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
             }
         }
     </style>
@@ -187,86 +207,101 @@
             <h1>Algebra 1, Semester B</h1>
             <p class="semester-info">Spring 2025</p>
         </header>
+        
+        <main class="column">
+            <div class="units-grid">
+                <div class="unit" data-unit="unit1">
+                    <i class="fas fa-square-root-alt"></i>
+                    <span>Unit 1: Polynomials</span>
+                </div>
 
-        <main class="units-grid">
-            <a href="units/unit1.html" class="unit">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">Unit 1: Polynomials</h2>
-                        <p class="unit-status">24 answers • 100% Complete</p>
-                    </div>
-                    <div class="icon">1</div>
+                <div class="unit" data-unit="unit2">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Unit 2: Quadratic Relationships</span>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 100%"></div>
-                </div>
-            </a>
 
-            <a href="units/unit2.html" class="unit">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">Unit 2: Quadratic Relationships</h2>
-                        <p class="unit-status">19 answers • 100% Complete</p>
-                    </div>
-                    <div class="icon">2</div>
+                <div class="unit" data-unit="unit3">
+                    <i class="fas fa-superscript"></i>
+                    <span>Unit 3: Solving Quadratic Equations</span>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 100%"></div>
-                </div>
-            </a>
 
-            <div class="unit coming-soon">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">Unit 3: Solving Quadratic Equations</h2>
-                        <p class="unit-status">Coming Soon</p>
-                    </div>
-                    <div class="icon">3</div>
+                <div class="unit disabled">
+                    <i class="fas fa-chart-exponential"></i>
+                    <span>Unit 4: Exponential Relationships</span>
+                    <i class="fas fa-lock lock-icon"></i>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                </div>
-            </div>
 
-            <div class="unit disabled">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">Unit 4: Exponential Relationships</h2>
-                        <p class="unit-status">Coming Soon</p>
-                    </div>
-                    <div class="icon">4</div>
+                <div class="unit disabled">
+                    <i class="fas fa-function"></i>
+                    <span>Unit 5: Mixed Functions</span>
+                    <i class="fas fa-lock lock-icon"></i>
                 </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                </div>
-            </div>
 
-            <div class="unit disabled">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">Unit 5: Mixed Functions</h2>
-                        <p class="unit-status">Coming Soon</p>
-                    </div>
-                    <div class="icon">5</div>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <div class="unit disabled">
-                <div class="unit-content">
-                    <div>
-                        <h2 class="unit-title">End of Semester Test</h2>
-                        <p class="unit-status">Complete All Units to Unlock</p>
-                    </div>
-                    <div class="icon">🎓</div>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: 0%"></div>
+                <div class="unit disabled">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>End of Semester Test: Algebra 1B</span>
+                    <i class="fas fa-lock lock-icon"></i>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- Modal -->
+    <div class="modal" id="notesModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('notesModal');
+        const modalContent = document.getElementById('modalContent');
+        const loading = document.querySelector('.loading');
+
+        // Add click listeners to units
+        document.querySelectorAll('.unit:not(.disabled)').forEach(unit => {
+            unit.addEventListener('click', () => openModal(unit.dataset.unit));
+        });
+
+        async function openModal(unitId) {
+            modal.classList.add('active');
+            loading.classList.add('active');
+            modalContent.innerHTML = '';
+
+            try {
+                const response = await fetch(`units/${unitId}.html`);
+                const content = await response.text();
+                modalContent.innerHTML = content;
+            } catch (error) {
+                modalContent.innerHTML = '<p>Error loading content. Please try again later.</p>';
+            } finally {
+                loading.classList.remove('active');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            modalContent.innerHTML = '';
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
