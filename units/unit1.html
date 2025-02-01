@@ -1,23 +1,12 @@
 <div class="unit-content">
     <div class="header">
-        <div class="header-content">
-            <h2>Unit 1: Polynomials</h2>
-            <div class="unit-progress">
-                <span class="progress-text">Progress</span>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-            </div>
-        </div>
-        <div class="navigation">
-            <button class="nav-btn" onclick="window.location.href='unit2.html'">Next Unit balls →</button>
+        <h2>Unit 1: Polynomials</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
     </div>
     
-    <div class="notes-container" id="notesContainer">
-        <div class="loading-overlay">
-            <div class="loader"></div>
-        </div>
+    <div class="notes-container">
         <img src="images/unit1/download.jfif" alt="1">
         <img src="images/unit1/download (1).jfif" alt="2">
         <img src="images/unit1/download (2).jfif" alt="3">
@@ -47,196 +36,126 @@
     <button id="scrollTop" class="scroll-top">↑</button>
 
     <style>
-        :root {
-            --primary-color: #4f46e5;
-            --primary-dark: #4338ca;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --shadow: rgba(0, 0, 0, 0.1);
-        }
-
         body {
-            background: var(--background);
+            background: #f5f5f5;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
         }
 
         .unit-content {
             background: white;
-            max-width: 1000px;
-            margin: 20px auto;
-            border-radius: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 4px 30px var(--shadow);
         }
 
         .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            padding: 25px 30px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 30px;
             color: white;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        h2 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .unit-progress {<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1: Polynomials</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .unit-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            background: #6366f1;
-            padding: 20px 30px;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         h2 {
             margin: 0;
             font-size: 24px;
             font-weight: 600;
-        }
-
-        .progress-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .progress-text {
-            font-size: 14px;
-            opacity: 0.9;
+            letter-spacing: 0.5px;
         }
 
         .progress-bar {
-            width: 200px;
-            height: 4px;
+            margin-top: 15px;
             background: rgba(255,255,255,0.2);
+            height: 4px;
             border-radius: 2px;
-            overflow: hidden;
         }
 
         .progress {
             width: 0%;
             height: 100%;
-            background: white;
+            background: #fff;
+            border-radius: 2px;
             transition: width 0.3s ease;
         }
 
-        .next-unit {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.2s ease;
-            text-decoration: none;
-        }
-
-        .next-unit:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
         .notes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
             padding: 30px;
+            background: white;
         }
 
         .notes-container img {
             width: 100%;
-            max-width: 100%;
             height: auto;
-            margin-bottom: 20px;
+            display: block;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .notes-container img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease, background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top:hover {
+            background: #2a5298;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .unit-content {
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .notes-container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
-</head>
-<body>
-    <div class="unit-content">
-        <div class="header">
-            <h2>Unit 1: Polynomials</h2>
-            <div class="progress-section">
-                <span class="progress-text">Progress</span>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <a href="unit2.html" class="next-unit">Next Unit →</a>
-            </div>
-        </div>
-        
-        <div class="notes-container">
-            <img src="../images/unit1/download.jfif" alt="1">
-            <img src="../images/unit1/download (1).jfif" alt="2">
-            <img src="../images/unit1/download (2).jfif" alt="3">
-            <img src="../images/unit1/download (3).jfif" alt="4">
-            <img src="../images/unit1/download (4).jfif" alt="5">
-            <img src="../images/unit1/download (5).jfif" alt="6">
-            <img src="../images/unit1/download (6).jfif" alt="7">
-            <img src="../images/unit1/download (7).jfif" alt="8">
-            <img src="../images/unit1/download (8).jfif" alt="9">
-            <img src="../images/unit1/download (9).jfif" alt="10">
-            <img src="../images/unit1/download (10).jfif" alt="11">
-            <img src="../images/unit1/download (11).jfif" alt="12">
-            <img src="../images/unit1/download (12).jfif" alt="13">
-            <img src="../images/unit1/download (13).jfif" alt="14">
-            <img src="../images/unit1/download (14).jfif" alt="15">
-            <img src="../images/unit1/download (15).jfif" alt="16">
-            <img src="../images/unit1/download (16).jfif" alt="17">
-            <img src="../images/unit1/download (17).jfif" alt="18">
-            <img src="../images/unit1/download (18).jfif" alt="19">
-            <img src="../images/unit1/download (19).jfif" alt="20">
-            <img src="../images/unit1/download (20).jfif" alt="21">
-            <img src="../images/unit1/download (21).jfif" alt="22">
-            <img src="../images/unit1/download (22).jfif" alt="23">
-            <img src="../images/unit1/download (23).jfif" alt="24">
-        </div>
-    </div>
 
     <script>
         // Progress bar
@@ -248,12 +167,31 @@
             document.querySelector('.progress').style.width = progress + '%';
         };
 
-        // Event listeners
-        window.addEventListener('scroll', updateProgress);
-        window.addEventListener('resize', updateProgress);
+        // Scroll to top button
+        const scrollButton = document.getElementById('scrollTop');
+        const toggleScrollButton = () => {
+            if (window.scrollY > 500) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        };
 
-        // Initial call
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgress();
+            toggleScrollButton();
+        });
+
+        // Initial calls
         updateProgress();
+        toggleScrollButton();
     </script>
-</body>
-</html>
+</div>
