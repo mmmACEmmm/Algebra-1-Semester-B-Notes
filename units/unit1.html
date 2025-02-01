@@ -184,23 +184,6 @@
             });
         });
 
-        // Lazy loading images
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.notes-container img').forEach(img => {
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-            observer.observe(img);
-        });
-
         // Event listeners
         window.addEventListener('scroll', () => {
             updateProgress();
