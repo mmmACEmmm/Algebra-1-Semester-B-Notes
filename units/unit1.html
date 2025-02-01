@@ -1,65 +1,214 @@
 <div class="unit-content">
-    <h2>Unit 1</h2>
+    <div class="header">
+        <h2>Unit 1: Polynomials</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
     
     <div class="notes-container">
-        <img src="images/unit1/download.jifi" alt="1">
+        <img src="images/unit1/download.jfif" alt="1">
         <img src="images/unit1/download (1).jfif" alt="2">
-        <img src="images/unit1/download (2).jifi" alt="3">
-        <img src="images/unit1/download (3).jifi" alt="4">
-        <img src="images/unit1/download (4).jifi" alt="5">
-        <img src="images/unit1/download (5).jifi" alt="6">
-        <img src="images/unit1/download (6).jifi" alt="7">
-        <img src="images/unit1/download (7).jifi" alt="8">
-        <img src="images/unit1/download (8).jifi" alt="9">
-        <img src="images/unit1/download (9).jifi" alt="10">
-        <img src="images/unit1/download (10).jifi" alt="11">
-        <img src="images/unit1/download (11).jifi" alt="12">
-        <img src="images/unit1/download (12).jifi" alt="13">
-        <img src="images/unit1/download (13).jifi" alt="14">
-        <img src="images/unit1/download (14).jifi" alt="15">
-        <img src="images/unit1/download (15).jifi" alt="16">
-        <img src="images/unit1/download (16).jifi" alt="17">
-        <img src="images/unit1/download (17).jifi" alt="18">
-        <img src="images/unit1/download (18).jifi" alt="19">
-        <img src="images/unit1/download (19).jifi" alt="20">
-        <img src="images/unit1/download (20).jifi" alt="21">
-        <img src="images/unit1/download (21).jifi" alt="22">
-        <img src="images/unit1/download (22).jifi" alt="23">
-        <img src="images/unit1/download (23).jifi" alt="24">
+        <img src="images/unit1/download (2).jfif" alt="3">
+        <img src="images/unit1/download (3).jfif" alt="4">
+        <img src="images/unit1/download (4).jfif" alt="5">
+        <img src="images/unit1/download (5).jfif" alt="6">
+        <img src="images/unit1/download (6).jfif" alt="7">
+        <img src="images/unit1/download (7).jfif" alt="8">
+        <img src="images/unit1/download (8).jfif" alt="9">
+        <img src="images/unit1/download (9).jfif" alt="10">
+        <img src="images/unit1/download (10).jfif" alt="11">
+        <img src="images/unit1/download (11).jfif" alt="12">
+        <img src="images/unit1/download (12).jfif" alt="13">
+        <img src="images/unit1/download (13).jfif" alt="14">
+        <img src="images/unit1/download (14).jfif" alt="15">
+        <img src="images/unit1/download (15).jfif" alt="16">
+        <img src="images/unit1/download (16).jfif" alt="17">
+        <img src="images/unit1/download (17).jfif" alt="18">
+        <img src="images/unit1/download (18).jfif" alt="19">
+        <img src="images/unit1/download (19).jfif" alt="20">
+        <img src="images/unit1/download (20).jfif" alt="21">
+        <img src="images/unit1/download (21).jfif" alt="22">
+        <img src="images/unit1/download (22).jfif" alt="23">
+        <img src="images/unit1/download (23).jfif" alt="24">
     </div>
+
+    <button id="scrollTop" class="scroll-top">↑</button>
 
     <style>
         body {
-            background: white;
+            background: #f5f5f5;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .unit-content {
             background: white;
-            padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 30px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         h2 {
-            color: black;
-            margin-bottom: 20px;
-            text-align: center;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-bar {
+            margin-top: 15px;
+            background: rgba(255,255,255,0.2);
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            border-radius: 2px;
+            transition: width 0.3s ease;
         }
 
         .notes-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
+            padding: 30px;
+            background: white;
         }
 
         .notes-container img {
             width: 100%;
             height: auto;
             display: block;
-            background: white;
-            box-shadow: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .notes-container img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease, background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top:hover {
+            background: #2a5298;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .unit-content {
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .notes-container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
+
+    <script>
+        // Progress bar
+        const updateProgress = () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.querySelector('.progress').style.width = progress + '%';
+        };
+
+        // Scroll to top button
+        const scrollButton = document.getElementById('scrollTop');
+        const toggleScrollButton = () => {
+            if (window.scrollY > 500) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        };
+
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Lazy loading images
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.notes-container img').forEach(img => {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+            observer.observe(img);
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgress();
+            toggleScrollButton();
+        });
+
+        // Initial calls
+        updateProgress();
+        toggleScrollButton();
+    </script>
 </div>
