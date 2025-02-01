@@ -1,72 +1,192 @@
 <div class="unit-content">
-    <h2>Unit 1: Polynomials</h2>
-    
-    <div class="section">
-        <h3>1.1 Introduction to Polynomials</h3>
-        <img src="path/to/your/image1.jpg" alt="Introduction to Polynomials" class="note-image">
-        <div class="notes">
-            <p>Key points about polynomials:</p>
-            <ul>
-                <li>Definition and terms</li>
-                <li>Degree of polynomials</li>
-                <li>Standard form</li>
-            </ul>
+    <div class="header">
+        <h2>Unit 2: Quadratic Relationships</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
+    </div>
+    
+    <div class="notes-container">
+        <img src="images/unit2/download.jfif" alt="1">
+        <img src="images/unit2/download (1).jfif" alt="2">
+        <img src="images/unit2/download (2).jfif" alt="3">
+        <img src="images/unit2/download (3).jfif" alt="4">
+        <img src="images/unit2/download (4).jfif" alt="5">
+        <img src="images/unit2/download (5).jfif" alt="6">
+        <img src="images/unit2/download (6).jfif" alt="7">
+        <img src="images/unit2/download (7).jfif" alt="8">
+        <img src="images/unit2/download (8).jfif" alt="9">
+        <img src="images/unit2/download (9).jfif" alt="10">
+        <img src="images/unit2/download (10).jfif" alt="11">
+        <img src="images/unit2/download (11).jfif" alt="12">
+        <img src="images/unit2/download (12).jfif" alt="13">
+        <img src="images/unit2/download (13).jfif" alt="14">
+        <img src="images/unit2/download (14).jfif" alt="15">
+        <img src="images/unit2/download (15).jfif" alt="16">
+        <img src="images/unit2/download (16).jfif" alt="17">
+        <img src="images/unit2/download (17).jfif" alt="18">
+        <img src="images/unit2/download (18).jfif" alt="19">
     </div>
 
-    <div class="section">
-        <h3>1.2 Operations with Polynomials</h3>
-        <img src="path/to/your/image2.jpg" alt="Operations with Polynomials" class="note-image">
-        <div class="notes">
-            <p>Operations covered:</p>
-            <ul>
-                <li>Addition and Subtraction</li>
-                <li>Multiplication</li>
-                <li>Division</li>
-            </ul>
-        </div>
-    </div>
+    <button id="scrollTop" class="scroll-top">↑</button>
 
     <style>
-        .unit-content {
-            color: white;
-            padding: 20px;
+        body {
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .section {
-            margin-bottom: 30px;
+        .unit-content {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 30px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         h2 {
-            color: #ff5e57;
-            margin-bottom: 20px;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        h3 {
-            color: #ff5e57;
-            margin-bottom: 15px;
-        }
-
-        .note-image {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        .notes {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
+        .progress-bar {
             margin-top: 15px;
+            background: rgba(255,255,255,0.2);
+            height: 4px;
+            border-radius: 2px;
         }
 
-        ul {
-            list-style-position: inside;
-            margin-top: 10px;
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #fff;
+            border-radius: 2px;
+            transition: width 0.3s ease;
         }
 
-        li {
-            margin: 5px 0;
+        .notes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+        }
+
+        .notes-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .notes-container img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease, background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top:hover {
+            background: #2a5298;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .unit-content {
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .notes-container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
+
+    <script>
+        // Progress bar
+        const updateProgress = () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.querySelector('.progress').style.width = progress + '%';
+        };
+
+        // Scroll to top button
+        const scrollButton = document.getElementById('scrollTop');
+        const toggleScrollButton = () => {
+            if (window.scrollY > 500) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        };
+
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgress();
+            toggleScrollButton();
+        });
+
+        // Initial calls
+        updateProgress();
+        toggleScrollButton();
+    </script>
 </div>
